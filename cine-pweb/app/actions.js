@@ -26,3 +26,16 @@ export async function searchMovies(formData) {
   const data = await res.json();
   return data.results;
 }
+
+export async function getMoviesByQuery(query) {
+  if (!query) return [];
+  
+  // Codifica o texto para URL (ex: "Velozes e Furiosos" vira "Velozes%20e%20Furiosos")
+  const urlSafeQuery = encodeURIComponent(query);
+  
+  const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${urlSafeQuery}&language=pt-BR`);
+  
+  if (!res.ok) throw new Error('Falha na busca');
+  
+  return res.json();
+}

@@ -1,5 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
+import Search from './components/Search'; // <--- 1. IMPORTE AQUI
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,10 +14,14 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body className={`${inter.className} bg-gray-900 text-white`}>
         <nav className="p-4 bg-black border-b border-gray-800 sticky top-0 z-50">
-          <div className="container mx-auto flex justify-between items-center">
+          <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <a href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
               CinePWeb
             </a>
+            
+            {/* 2. ADICIONE O COMPONENTE AQUI */}
+            <Search />
+            
           </div>
         </nav>
         {children}

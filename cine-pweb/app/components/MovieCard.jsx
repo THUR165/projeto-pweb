@@ -1,12 +1,11 @@
-'use client' // Componente de interação visual
+'use client'
 
-import Link from 'next/link'; // Importante para Routing
+import Link from 'next/link';
 
 export default function MovieCard({ movie }) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return (
-    // O Link cria a navegação SPA (Single Page Application)
     <Link href={`/movie/${movie.id}`} className="group">
       <div className="bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
         <div className="relative h-[400px]">

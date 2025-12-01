@@ -1,21 +1,16 @@
-import { getPopularMovies, getMoviesByQuery } from './actions'; // Importe a nova função
+import { getPopularMovies, getMoviesByQuery } from './actions';
 import MovieCard from './components/MovieCard';
 
-// Adicione props { searchParams } na função principal
 export default async function Home({ searchParams }) {
   
-  // No Next.js 16, searchParams é uma Promessa (igual ao params)
-  // Precisamos esperar ela resolver para ver se tem busca
   const { query } = await searchParams;
   
   let movies = [];
   
   if (query) {
-    // Se tiver busca na URL, usa a função de busca
     const data = await getMoviesByQuery(query);
     movies = data.results || [];
   } else {
-    // Se não, carrega os populares
     const data = await getPopularMovies();
     movies = data.results || [];
   }

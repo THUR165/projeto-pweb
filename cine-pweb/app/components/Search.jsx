@@ -1,4 +1,4 @@
-'use client' // Importante: Roda no navegador
+'use client'
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -8,13 +8,11 @@ export default function Search() {
   const router = useRouter();
 
   const handleSearch = (e) => {
-    e.preventDefault(); // Impede o recarregamento da página
+    e.preventDefault();
     
     if (text.trim()) {
-      // Redireciona para a Home com o parâmetro ?query=O_QUE_DIGITOU
       router.push(`/?query=${text}`);
     } else {
-      // Se limpar, volta para a home pura
       router.push('/');
     }
   };

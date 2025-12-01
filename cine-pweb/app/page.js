@@ -1,5 +1,6 @@
 import { getPopularMovies, getMoviesByQuery } from './actions';
 import MovieCard from './components/MovieCard';
+import LoadMore from './components/LoadMore';
 
 export default async function Home({ searchParams }) {
   
@@ -8,10 +9,10 @@ export default async function Home({ searchParams }) {
   let movies = [];
   
   if (query) {
-    const data = await getMoviesByQuery(query);
+    const data = await getMoviesByQuery(query, 1);
     movies = data.results || [];
   } else {
-    const data = await getPopularMovies();
+    const data = await getPopularMovies(1);
     movies = data.results || [];
   }
 
@@ -30,6 +31,9 @@ export default async function Home({ searchParams }) {
       ) : (
         <p className="text-gray-400 text-lg">Nenhum filme encontrado 😕</p>
       )}
+
+      <LoadMore searchParams={query} />
+      
     </main>
   );
 }

@@ -7,6 +7,7 @@ export default function WishlistPage() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
+    // Carrega os filmes salvos do LocalStorage
     const stored = JSON.parse(localStorage.getItem('cinepweb_favorites')) || [];
     setFavorites(stored);
   }, []);
